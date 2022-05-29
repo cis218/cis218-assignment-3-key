@@ -49,8 +49,6 @@ class Review(models.Model):
         on_delete=models.CASCADE,
         related_name="reviews",
     )
-    name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200)
     body = models.TextField()
     rating = models.IntegerField(choices=RATING_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
@@ -58,7 +56,7 @@ class Review(models.Model):
 
     def __str__(self):
         """String"""
-        return f"{self.restaurant.name} - {self.name} - {self.rating}"
+        return f"{self.restaurant.name} - {self.author.username} - {self.rating}"
 
     def get_absolute_url(self):
         """Get absolute URL"""
