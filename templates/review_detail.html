@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ review.restaurant.name }} Review Detail
+{% endblock title %}
+
+{% block content %}
+  <h1>
+    <a href="{% url "restaurant_detail" review.restaurant.pk %}" class="btn btn-secondary">
+      <i class="bi bi-arrow-left"></i>
+    </a>
+    {{ review.restaurant.name }} - Review Detail
+  </h1>
+  <div class="card">
+    <div class="card-body">
+      {% include "partials/_review.html" %}
+      {% if user == review.author %}
+        <div class="float-left">
+          <a href="{% url "review_edit" review.pk %}" class="btn btn-success btn-sm">
+            <i class="bi bi-pencil" aria-hidden="true"></i>
+            Edit review
+          </a>
+          <a href="{% url "review_delete" review.pk %}" class="btn btn-danger btn-sm">
+            <i class="bi bi-x-circle" aria-hidden="true"></i>
+            Delete review
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

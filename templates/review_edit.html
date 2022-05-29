@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ review.restaurant.name }} - Edit Review
+{% endblock title %}
+
+{% block content %}
+  <h1>
+    <a href="{% url "review_detail" review.pk %}" class="btn btn-secondary">
+      <i class="bi bi-arrow-left"></i>
+    </a>
+    {{ review.restaurant.name }} - Edit Review
+  </h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-success" type="submit" value="Update">
+  </form>
+{% endblock content %}
