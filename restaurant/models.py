@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.urls import reverse
 
 # Rating choices for the Review model.
@@ -25,6 +26,14 @@ class Restaurant(models.Model):
     def get_absolute_url(self):
         """Get absolute URL"""
         return reverse("restaurant_detail", kwargs={"pk": self.pk})
+
+    def avg_rating(self):
+        """Get the average rating"""
+        return self.reviews.all().aggregate(Avg("rating"))["rating__avg"]
+
+    def review_count(self):
+        """Get the number of reviews"""
+        return self.reviews.count()
 
 
 class Review(models.Model):

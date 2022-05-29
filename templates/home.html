@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Home Restaurant List
+{% endblock title %}
+
+{% block content %}
+  <h1>All Restaurants</h1>
+  <hr>
+  {% for restaurant in restaurant_list %}
+    <div class="blog-post">
+      <h3 class="blog-post-title">
+        <a href="{{ restaurant.get_absolute_url }}">{{ restaurant.name }}</a>
+      </h3>
+      {% include 'partials/_restaurant_stats.html' %}
+    </div><!-- /.blog-post -->
+    <div class="clearfix"></div>
+    <hr>
+  {% endfor %}
+{% endblock content %}

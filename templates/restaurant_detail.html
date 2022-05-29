@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ restaurant.name }}
+{% endblock title %}
+
+{% block content %}
+  <h1>{{ restaurant.name }}</h1>
+  <hr>
+  {% include "partials/_restaurant_stats.html" %}
+  <div class="float-end">
+    <a href="{% url "admin:restaurant_restaurant_add" %}" class="btn btn-primary btn-sm">
+      <i class="bi bi-pencil" aria-hidden="true"></i>
+      Write a review
+    </a>
+  </div>
+  <div class="clearfix"></div>
+  <hr>
+  {% if restaurant.reviews.all %}
+    {% for review in restaurant.reviews.all %}
+      {% include 'partials/_review.html' %}
+    {% endfor %}
+  {% else %}
+    There are no reviews yet.
+  {% endif %}
+{% endblock content %}
