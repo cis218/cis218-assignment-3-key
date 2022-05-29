@@ -8,7 +8,7 @@
   <h2>{{ restaurant.name }}</h2>
   {% include "partials/_restaurant_stats.html" %}
   <div class="float-end">
-    <a href="{% url "review_create" restaurant.pk %}" class="btn btn-primary">
+    <a href="{% url "review_new" restaurant.pk %}" class="btn btn-primary">
       <i class="bi bi-plus-circle" aria-hidden="true"></i>
       Write a review
     </a>

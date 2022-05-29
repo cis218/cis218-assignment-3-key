@@ -13,10 +13,10 @@ urlpatterns = [
     path(
         "restaurant/<int:restaurant_pk>/review/new/",
         ReviewCreateView.as_view(),
-        name="review_create",
+        name="review_new",
     ),
     path(
-        "review/<int:pk>/detail/",
+        "review/<int:pk>/",
         ReviewDetailView.as_view(),
         name="review_detail",
     ),
