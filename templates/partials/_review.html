@@ -1,0 +1,10 @@
+{% load helper_tags %}
+
+<p>
+  <img src="{% get_avatar_url email=review.email %}" class="user-image" alt="user image">
+  {{ review.name }}
+  - {{ review.rating }}-Stars
+  - {{ review.created }}
+</p>
+<p>{{ review.body }}</p>
+<hr>
