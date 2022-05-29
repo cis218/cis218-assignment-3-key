@@ -1,10 +1,24 @@
 {% load helper_tags %}
 
-<p>
+<div>
   <img src="{% get_avatar_url email=review.email %}" class="user-image" alt="user image">
   {{ review.name }}
-  - {{ review.rating }}-Stars
-  - {{ review.created }}
-</p>
+  - <i class="bi bi-star-fill"></i> {{ review.rating }} Star
+  - Created {{ review.created }}
+
+  {% if user == review.author %}
+    <div class="float-end">
+      <a href="{% url "admin:restaurant_restaurant_change" review.pk %}" class="btn btn-success btn-sm">
+        <i class="bi bi-pencil" aria-hidden="true"></i>
+        Edit review
+      </a>
+      <a href="{% url "admin:restaurant_restaurant_delete" review.pk %}" class="btn btn-danger btn-sm">
+        <i class="bi bi-x-circle" aria-hidden="true"></i>
+        Delete review
+      </a>
+    </div>
+  {% endif %}
+</div>
+<br>
 <p>{{ review.body }}</p>
 <hr>
