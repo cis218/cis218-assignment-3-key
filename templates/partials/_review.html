@@ -1,7 +1,7 @@
 {% load helper_tags %}
 
 <h6 class="card-title">
-  <img src="{% get_avatar_url email=review.author.email %}" class="user-image" alt="user image">
+  <img src="{% get_avatar_url email=review.author.email %}" class="rounded-circle" alt="user image">
   {% if review.author.first_name and review.author.last_name %}
     {{ review.author.first_name }} {{ review.author.last_name }}
   {% else %}
