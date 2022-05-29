@@ -5,20 +5,26 @@
 {% endblock title %}
 
 {% block content %}
-  <h1>{{ restaurant.name }}</h1>
-  <hr>
+  <h2>{{ restaurant.name }}</h2>
   {% include "partials/_restaurant_stats.html" %}
   <div class="float-end">
-    <a href="{% url "admin:restaurant_restaurant_add" %}" class="btn btn-primary btn-sm">
+    <a href="{% url "review_create" restaurant.pk %}" class="btn btn-primary">
       <i class="bi bi-plus-circle" aria-hidden="true"></i>
       Write a review
     </a>
   </div>
   <div class="clearfix"></div>
   <hr>
-  {% if restaurant.reviews.all %}
+  {% if restaurant.reviews.exists %}
     {% for review in restaurant.reviews.all %}
-      {% include 'partials/_review.html' %}
+      <div class="card">
+        <div class="card-body">
+          {% include 'partials/_review.html' %}
+          <a href="{% url "review_detail" review.pk %}" class="btn btn-secondary">
+            Read full review
+          </a>
+        </div>
+      </div>
     {% endfor %}
   {% else %}
     There are no reviews yet.

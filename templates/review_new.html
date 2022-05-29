@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ restaurant.name }} - New Review
+{% endblock title %}
+
+{% block content %}
+  <h1>
+    <a href="{% url "restaurant_detail" restaurant.pk %}" class="btn btn-secondary">
+      <i class="bi bi-arrow-left"></i>
+    </a>
+    {{ restaurant.name }} - New Review
+  </h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-success" type="submit" value="Save">
+  </form>
+{% endblock content %}
